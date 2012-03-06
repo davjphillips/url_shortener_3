@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  in_url: MyText
+  out_url: MyString
+  http_status: 1
+
+two:
+  in_url: MyText
+  out_url: MyString
+  http_status: 1

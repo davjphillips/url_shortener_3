@@ -1,10 +1,14 @@
 UrlShortener3::Application.routes.draw do
   
-  get "users/create"
+  
+  #
+  resources :links
+  match ':out_url' => 'links#go'
+  
 
   devise_for :users
 
-  root :to => "home#index"
+  root :to => "pages#home"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
