@@ -13,7 +13,17 @@
 
   <div class="field">
     <%= f.label :in_url %><br />
-    <%= f.text_field :in_url %>
+    <%= f.text_area :in_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :out_url %><br />
+    <%= f.text_field :out_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :http_status %><br />
+    <%= f.number_field :http_status %>
   </div>
 
   <div class="actions">
