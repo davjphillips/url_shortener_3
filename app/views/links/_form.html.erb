@@ -1,32 +1,45 @@
+<br />
 <%= form_for(@link) do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
-
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:
+			</h2>
       <ul>
-      <% @link.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+      	<% @link.errors.full_messages.each do |msg| %>
+        	<li><%= msg %></li>
+      	<% end %>
       </ul>
     </div>
-  <% end %>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :in_url %><br />
-    <%= f.text_area :in_url %>
+  <div class="field"> 
+		<%= f.text_field :in_url, :style => "width:500px; height:40px; font-size:24px;" %>
+		<%= f.submit 'Shorten', :class => "btn btn-large", :style => "margin-left:10px; margin-bottom: 10px;padding-top:15px; padding-bottom:15px;" %>
   </div>
 
-  <div class="field">
-    <%= f.label :out_url %><br />
-    <%= f.text_field :out_url %>
-  </div>
+	<div class="accordion-group" style="border:none;">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+	                  Custom Vanity URL (optional)
+	    </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
+			<div class="accordion-inner" style="border:none;">  
+				<div class="field">
+			    <%= f.text_field :out_url, :style => "width:500px; height:40px; font-size:24px; margin-left:-97px" %>
+			  </div> 
+      </div>
+    </div>
+	</div>
 
-  <div class="field">
-    <%= f.label :http_status %><br />
-    <%= f.number_field :http_status %>
-  </div>
+	<br />
+	
+	<br />
+	
+	
+  <% if user_signed_in? %>
+	            <%= f.hidden_field :user_id, :value => current_user.id  %>
+	<% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ 
 <% end %>

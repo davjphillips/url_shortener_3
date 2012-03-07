@@ -1,27 +1,25 @@
-<h1>Listing links</h1>
+<br />
 
-<table>
+<h2>My shortened links</h2>
+<br />
+<table class="table table-bordered table-striped">
   <tr>
-    <th>In url</th>
-    <th>Out url</th>
-    <th>Http status</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Long Link</th>
+    <th>Shortened Link</th>
+    <th>Clicks</th>
+		<th>Modify</th>
   </tr>
 
 <% @links.each do |link| %>
   <tr>
-    <td><%= link.in_url %></td>
+    <td><%= link.in_url %>  </td>
     <td><%= link.out_url %></td>
-    <td><%= link.http_status %></td>
-    <td><%= link_to 'Show', link %></td>
-    <td><%= link_to 'Edit', edit_link_path(link) %></td>
-    <td><%= link_to 'Destroy', link, confirm: 'Are you sure?', method: :delete %></td>
+		<td><%= link.counter %> </td>
+    <td><%= link_to 'Delete', link, confirm: 'Are you sure?', :class => "label label-important", method: :delete %> <%= link_to 'Edit', edit_link_path(link), :class => "label label-warning"%>  </td>
   </tr>
 <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Link', new_link_path %>
+
+<%= link_to 'New Link', new_link_path, :class => "btn btn-success" %>

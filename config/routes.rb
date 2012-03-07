@@ -1,14 +1,12 @@
 UrlShortener3::Application.routes.draw do
   
-  
-  #
-  resources :links
-  match ':out_url' => 'links#go'
-  
 
   devise_for :users
 
   root :to => "links#new"
+  
+  resources :links
+  match ':out_url' => 'links#go'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

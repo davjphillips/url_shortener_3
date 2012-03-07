@@ -1,20 +1,30 @@
-<p id="notice"><%= notice %></p>
+<% short_url = @link.out_url %>
 
-<p>
-  <b>In url:</b>
-  <%= @link.in_url %>
-</p>
+<div class="alert fade in">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+						<%= notice %>
+            <strong>Mama mia!</strong> You just shortened a URL :)
+          </div>
+<div class="hero-unit", style="text-align:center">
+	<div style="margin-top: -25px"><h2>Your shortened link: </h2></div>
+	<h2><a href=<%= "http://localhost:3000/" << @link.out_url %>><%= "http://localhost:3000/" << @link.out_url %></a></h2>
+	<%= link_to 'Edit', edit_link_path(@link), :class => "btn", :style => "float:right; margin-right:-50px" %> 
+	</div>
 
-<p>
-  <b>Out url:</b>
-  <%= @link.out_url %>
-</p>
+<table class="table table-bordered table-striped">
+<tr>
+  <th>Long Link</th>
+  <th>Shortened Link</th>
+  <th>Clicks</th>
+</tr>
 
-<p>
-  <b>Http status:</b>
-  <%= @link.http_status %>
-</p>
+<tr>
+	<td><%= @link.in_url %></td>
+  <td><%= @link.out_url %></td>
+	<td><%= @link.counter %></td>
+	
+</table>
 
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>
+<%= link_to 'Back', links_path, :class => "btn" %>
+

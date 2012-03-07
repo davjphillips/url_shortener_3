@@ -2,14 +2,19 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   
+  before_filter :authenticate_user!, :only => [:index, :edit, :update]
+  
   def go
     @link = Link.find_by_out_url!(params[:out_url])
+    @link.counter += 1
+    @link.save
     redirect_to @link.in_url, :status => @link.http_status
   end
   
   
   def index
-    @links = Link.all
+    @user = current_user
+    @links = current_user.links
 
     respond_to do |format|
       format.html # index.html.erb
